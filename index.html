@@ -88,7 +88,7 @@
     justify-content: center;
     padding: 12px 16px;
   }
-  .trustbar-logo { height: 22px; width: auto; }
+  .trustbar-logo { height: 38px; width: auto; }
 
   .hero {
     position: relative;
@@ -112,14 +112,12 @@
     padding: 36px 44px 56px;
   }
 
-  .hero-logo-row { margin-bottom: 30px; }
-  .hero-logo-row img { height: 38px; width: auto; }
-
   .hero-content { max-width: 640px; }
 
   .hero-headline { margin-bottom: 12px; }
   .headline-line1 {
     display: block;
+    width: fit-content;
     font-size: clamp(42px, 5.75vw, 67px);
     font-weight: 900;
     line-height: 1.05;
@@ -128,6 +126,7 @@
   }
   .headline-line2 {
     display: block;
+    width: fit-content;
     font-size: clamp(19px, 2.79vw, 32px);
     font-weight: 900;
     line-height: 1.15;
@@ -228,24 +227,9 @@
   }
   .zip-desc strong { color: #fff; font-weight: 700; }
 
-  .hero-trust-row { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
-  .trust-pill {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    background: #fff;
-    color: var(--navy);
-    padding: 8px 16px;
-    border-radius: 999px;
-    font-size: 13.5px;
-    font-weight: 700;
-  }
-  .trust-item { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 13.5px; font-weight: 600; }
-
   @media (max-width: 640px) {
     .hero-inner { padding: 24px 20px 40px; }
-    .hero-logo-row img { height: 30px; }
-    .trustbar-logo { height: 18px; }
+    .trustbar-logo { height: 30px; }
     .headline-line2 { white-space: normal; }
     .hero-sub { font-size: 16px; }
     .zip-card { padding: 20px; }
@@ -479,10 +463,6 @@
 <section class="hero" id="top">
   <div class="hero-inner">
 
-    <div class="hero-logo-row">
-      <a href="#top"><img src="./img/logo-white.svg" alt="Affordable Home" /></a>
-    </div>
-
     <div class="hero-content">
       <h1 class="hero-headline">
         <span class="headline-line1">UP TO <span class="accent">75% OFF</span></span>
@@ -547,25 +527,23 @@
           Stop cleaning your gutters for good. Qualifying zip codes get access to <strong>up to 75% off gutter guard installation</strong>, plus an extra $200 off. <strong>Debris-proof, pest-resistant</strong>, and built to last with a <strong>lifetime warranty</strong>.
         </p>
       </div>
-
-      <div class="hero-trust-row">
-        <span class="trust-pill">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="#F5A623" aria-hidden="true"><polygon points="10,1 12.7,7 19,7.7 14.2,12 15.6,18.5 10,15.2 4.4,18.5 5.8,12 1,7.7 7.3,7"/></svg>
-          4.8/5 Rating
-        </span>
-        <span class="trust-item">
-          <svg width="16" height="16" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 4L37 10.5V24C37 31.5 30 36.5 22 40C14 36.5 7 31.5 7 24V10.5Z" stroke="#F97316" stroke-width="3" fill="none"/><polyline points="14,21 20,27.5 30,15" stroke="#F97316" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Licensed &amp; Insured
-        </span>
-        <span class="trust-item">
-          <svg width="16" height="16" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="16" r="10" stroke="#F97316" stroke-width="3"/><path d="M14 24 L10 40 L22 34 L34 40 L30 24" stroke="#F97316" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Thousands of Reviews
-        </span>
-      </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  function syncHeroWidths() {
+    var l1 = document.querySelector('.headline-line1');
+    var l2 = document.querySelector('.headline-line2');
+    if (!l1 || !l2) return;
+    var w = Math.max(l1.getBoundingClientRect().width, l2.getBoundingClientRect().width);
+    document.querySelector('.benefits').style.maxWidth = w + 'px';
+    document.querySelector('.zip-card').style.maxWidth = w + 'px';
+  }
+  window.addEventListener('load', syncHeroWidths);
+  window.addEventListener('resize', syncHeroWidths);
+</script>
 
 <!-- ═══════════════════ BENEFITS GRID ═══════════════════ -->
 <section class="benefits-section">
