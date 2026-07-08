@@ -81,14 +81,14 @@
   .btn-orange:active { transform: scale(0.99); }
 
   /* ══════════════ HERO ══════════════ */
-  .trustbar {
-    background: var(--navy);
+  .hero-logo-row {
+    position: relative;
+    z-index: 1;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 12px 16px;
+    padding: 28px 16px 8px;
   }
-  .trustbar-logo { height: 38px; width: auto; }
+  .hero-logo { height: 38px; width: auto; }
 
   .hero {
     position: relative;
@@ -231,7 +231,8 @@
 
   @media (max-width: 640px) {
     .hero-inner { padding: 24px 20px 40px; }
-    .trustbar-logo { height: 30px; }
+    .hero-logo-row { padding: 20px 16px 4px; }
+    .hero-logo { height: 30px; }
     .headline-line2 { white-space: normal; }
     .hero-sub { font-size: 16px; }
     .sub-break { display: block; }
@@ -471,14 +472,13 @@
 </head>
 <body>
 
-<!-- ═══════════════════ TOP TRUST BAR ═══════════════════ -->
-<div class="trustbar">
-  <img src="./img/logo-white.svg" alt="Affordable Home" class="trustbar-logo" />
-</div>
-
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero" id="top">
   <div class="hero-inner">
+
+    <div class="hero-logo-row">
+      <img src="./img/logo-white.svg" alt="Affordable Home" class="hero-logo" />
+    </div>
 
     <div class="hero-content">
       <h1 class="hero-headline">
